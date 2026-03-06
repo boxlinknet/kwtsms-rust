@@ -209,11 +209,7 @@ fn send_otp(
     check_rate_limit(&mut store.ip_rates, client_ip, MAX_ATTEMPTS_PER_IP)?;
 
     // 3. Rate limit by phone
-    check_rate_limit(
-        &mut store.phone_rates,
-        &normalized,
-        MAX_ATTEMPTS_PER_PHONE,
-    )?;
+    check_rate_limit(&mut store.phone_rates, &normalized, MAX_ATTEMPTS_PER_PHONE)?;
 
     // 4. Check resend cooldown (KNET standard: 4 minutes)
     if let Some(existing) = store.codes.get(&normalized) {
@@ -240,14 +236,14 @@ fn send_otp(
         OTP_EXPIRY.as_secs() / 60
     );
 
-    let result = sms.send_one(&normalized, &message, Some(SENDER_ID)).map_err(
-        |e| {
+    let result = sms
+        .send_one(&normalized, &message, Some(SENDER_ID))
+        .map_err(|e| {
             format!(
                 "SMS service is temporarily unavailable. Please try again later. ({})",
                 e
             )
-        },
-    )?;
+        })?;
 
     match result["result"].as_str() {
         Some("OK") => {
@@ -288,18 +284,14 @@ fn send_otp(
             //    NEVER show raw API errors to end users
             let code = result["code"].as_str().unwrap_or("");
             let user_msg = match code {
-                "ERR006" | "ERR025" => {
-                    "Please enter a valid phone number (e.g., +965 9876 5432)."
-                }
+                "ERR006" | "ERR025" => "Please enter a valid phone number (e.g., +965 9876 5432).",
                 "ERR010" | "ERR011" => {
                     println!("[ALERT] SMS balance depleted! Code: {}", code);
                     "SMS service is temporarily unavailable. Please try again later."
                 }
                 "ERR026" => "SMS delivery to this country is not available.",
                 "ERR028" => "Please wait a moment before requesting another code.",
-                "ERR031" | "ERR032" => {
-                    "Your message could not be sent. Please try again."
-                }
+                "ERR031" | "ERR032" => "Your message could not be sent. Please try again.",
                 _ => {
                     println!("[ERROR] OTP send failed: {}", result);
                     "SMS service is temporarily unavailable. Please try again later."
@@ -416,9 +408,15 @@ fn main() {
     println!("  [ ] Transactional Sender ID registered (not KWT-SMS)");
     println!("  [ ] KWTSMS_TEST_MODE=0");
     println!("  [ ] CAPTCHA on OTP request form");
-    println!("  [ ] Rate limits: {} per phone/hour, {} per IP/hour", MAX_ATTEMPTS_PER_PHONE, MAX_ATTEMPTS_PER_IP);
+    println!(
+        "  [ ] Rate limits: {} per phone/hour, {} per IP/hour",
+        MAX_ATTEMPTS_PER_PHONE, MAX_ATTEMPTS_PER_IP
+    );
     println!("  [ ] OTP expiry: {} minutes", OTP_EXPIRY.as_secs() / 60);
-    println!("  [ ] Resend cooldown: {} minutes", RESEND_COOLDOWN.as_secs() / 60);
+    println!(
+        "  [ ] Resend cooldown: {} minutes",
+        RESEND_COOLDOWN.as_secs() / 60
+    );
     println!("  [ ] Database storage (not in-memory)");
     println!("  [ ] Low balance alerts configured");
     println!("  [ ] msg-id saved for every send");
