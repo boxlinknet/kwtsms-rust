@@ -1,0 +1,15 @@
+/target
+Cargo.lock
+*.log
+.env
+*.env
+!.env.example
+.DS_Store
+*.swp
+*.swo
+*~
+.claude/
+CLAUDE.md
+docs/plans/
+docs/prd-*
+*.jsonl
