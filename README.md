@@ -370,6 +370,7 @@ See the [`examples/`](examples/) directory:
 | [02_otp_flow](examples/02_otp_flow.rs) | Validate phone, send OTP with best practices |
 | [03_bulk_sms](examples/03_bulk_sms.rs) | Bulk send with >200 number batching |
 | [04_error_handling](examples/04_error_handling.rs) | All error paths, user-facing message mapping |
+| [05_otp_production](examples/05_otp_production.rs) | Production OTP: rate limiting, expiry, DB schemas |
 
 Run an example: `cargo run --example basic_usage`
 
