@@ -79,8 +79,8 @@ fn main() {
 Create a `.env` file or set these environment variables:
 
 ```ini
-KWTSMS_USERNAME=your_api_user
-KWTSMS_PASSWORD=your_api_pass
+KWTSMS_USERNAME=rust_username
+KWTSMS_PASSWORD=rust_password
 KWTSMS_SENDER_ID=KWT-SMS
 KWTSMS_TEST_MODE=1
 KWTSMS_LOG_FILE=kwtsms.log
@@ -380,8 +380,8 @@ Run an example: `cargo run --example basic_usage`
 cargo test
 
 # Integration tests (real API, test mode, no credits consumed)
-export rust_username=your_api_user
-export rust_password=your_api_pass
+export rust_username=rust_username
+export rust_password=rust_password
 cargo test --features integration
 ```
 

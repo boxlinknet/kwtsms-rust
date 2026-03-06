@@ -41,8 +41,8 @@ Included in `cargo test`. Tests in `tests/errors_test.rs` verify error code mapp
 ### Tier 3: Integration tests (real API, test mode)
 
 ```bash
-export rust_username=your_api_user
-export rust_password=your_api_pass
+export rust_username=rust_username
+export rust_password=rust_password
 cargo test --features integration
 ```
 

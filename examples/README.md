@@ -6,8 +6,8 @@ Runnable examples for the `kwtsms` Rust client.
 
 ```bash
 # Set up credentials first
-export KWTSMS_USERNAME=your_api_user
-export KWTSMS_PASSWORD=your_api_pass
+export KWTSMS_USERNAME=rust_username
+export KWTSMS_PASSWORD=rust_password
 export KWTSMS_TEST_MODE=1
 
 # Run an example
