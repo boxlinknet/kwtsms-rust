@@ -5,21 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.4] - 2026-03-06
+## [0.1.5] - 2026-03-06
 
 ### Added
 
-- CodeQL security analysis workflow.
+- SECURITY.md with vulnerability reporting instructions.
+- `cargo audit` security workflow (weekly + push/PR).
+- examples/README.md index file.
+- Full README per PRD: About kwtSMS, Prerequisites, Credential Management, Input Sanitization, Error Handling, Phone Number Formats, Test Mode, Sender ID, Best Practices, Security Checklist, What's Handled Automatically, FAQ, Help & Support.
+- Full CONTRIBUTING.md per PRD: project structure, branch naming, commit style, PR checklist, security issues.
 
 ### Changed
 
 - Use `rust_username`/`rust_password` env vars for integration tests (per-language convention).
-- Simplify `.gitignore`: collapse `docs/plans/` and `docs/prd-*` into `docs/`.
-- Add badges to README (crates.io, docs.rs, CI, MSRV, license).
+- Replace CodeQL with `cargo audit` (CodeQL does not support Rust).
+- Simplify `.gitignore`: collapse docs rules into `docs/`.
 
-### Fixed
+## [0.1.4] - 2026-03-06
 
-- Update MSRV references in README and CONTRIBUTING to 1.83.
+### Added
+
+- Badges in README (crates.io, docs.rs, CI, MSRV, license).
 
 ## [0.1.3] - 2026-03-06
 
