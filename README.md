@@ -3,6 +3,7 @@
 [![Crates.io](https://img.shields.io/crates/v/kwtsms.svg)](https://crates.io/crates/kwtsms)
 [![docs.rs](https://docs.rs/kwtsms/badge.svg)](https://docs.rs/kwtsms)
 [![CI](https://github.com/boxlinknet/kwtsms-rust/actions/workflows/publish.yml/badge.svg)](https://github.com/boxlinknet/kwtsms-rust/actions)
+[![Security Audit](https://github.com/boxlinknet/kwtsms-rust/actions/workflows/codeql.yml/badge.svg)](https://github.com/boxlinknet/kwtsms-rust/actions/workflows/codeql.yml)
 [![MSRV](https://img.shields.io/badge/MSRV-1.83-blue.svg)](https://blog.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 

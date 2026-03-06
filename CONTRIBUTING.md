@@ -80,7 +80,7 @@ kwtsms-rust/
 │   ├── dependabot.yml            Automated dependency updates
 │   └── workflows/
 │       ├── publish.yml           CI: test + cargo publish on tag
-│       └── codeql.yml            Security analysis (weekly + push/PR)
+│       └── codeql.yml            Cargo audit security scan (weekly + push/PR)
 ├── src/
 │   ├── lib.rs                    Public re-exports
 │   ├── client.rs                 KwtSms struct, all API methods
