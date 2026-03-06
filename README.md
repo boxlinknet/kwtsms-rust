@@ -1,4 +1,4 @@
-# kwtsms
+# kwtSMS Rust Client
 
 [![Crates.io](https://img.shields.io/crates/v/kwtsms.svg)](https://crates.io/crates/kwtsms)
 [![docs.rs](https://docs.rs/kwtsms/badge.svg)](https://docs.rs/kwtsms)
