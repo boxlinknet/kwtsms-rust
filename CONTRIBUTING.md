@@ -2,7 +2,7 @@
 
 ## Development Setup
 
-1. Install Rust: https://rustup.rs
+1. Install Rust 1.83+: https://rustup.rs
 2. Clone the repository:
    ```
    git clone https://github.com/boxlinknet/kwtsms-rust.git
@@ -22,8 +22,8 @@ cargo test
 ### Integration tests (real API, test mode)
 
 ```
-export RUST_USERNAME=your_api_user
-export RUST_PASSWORD=your_api_pass
+export rust_username=your_api_user
+export rust_password=your_api_pass
 cargo test --features integration
 ```
 

@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.4] - 2026-03-06
+
+### Added
+
+- CodeQL security analysis workflow.
+
+### Changed
+
+- Use `rust_username`/`rust_password` env vars for integration tests (per-language convention).
+- Simplify `.gitignore`: collapse `docs/plans/` and `docs/prd-*` into `docs/`.
+- Add badges to README (crates.io, docs.rs, CI, MSRV, license).
+
+### Fixed
+
+- Update MSRV references in README and CONTRIBUTING to 1.83.
+
 ## [0.1.3] - 2026-03-06
 
 ### Fixed

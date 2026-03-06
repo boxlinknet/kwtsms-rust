@@ -4,8 +4,8 @@
 //! Run with: cargo test --features integration
 //!
 //! Required environment variables:
-//! - RUST_USERNAME: API username
-//! - RUST_PASSWORD: API password
+//! - rust_username: API username
+//! - rust_password: API password
 //!
 //! All tests use test_mode=true (no credits consumed, no messages delivered).
 
@@ -14,8 +14,8 @@
 use kwtsms::KwtSms;
 
 fn get_client() -> Option<KwtSms> {
-    let username = std::env::var("RUST_USERNAME").ok()?;
-    let password = std::env::var("RUST_PASSWORD").ok()?;
+    let username = std::env::var("rust_username").ok()?;
+    let password = std::env::var("rust_password").ok()?;
 
     if username.is_empty() || password.is_empty() {
         return None;
@@ -28,15 +28,15 @@ fn get_client_or_skip() -> KwtSms {
     match get_client() {
         Some(c) => c,
         None => {
-            eprintln!("Skipping: RUST_USERNAME / RUST_PASSWORD not set");
+            eprintln!("Skipping: rust_username / rust_password not set");
             return KwtSms::new("skip", "skip", None, true, Some("")).unwrap();
         }
     }
 }
 
 fn has_credentials() -> bool {
-    let u = std::env::var("RUST_USERNAME").unwrap_or_default();
-    let p = std::env::var("RUST_PASSWORD").unwrap_or_default();
+    let u = std::env::var("rust_username").unwrap_or_default();
+    let p = std::env::var("rust_password").unwrap_or_default();
     !u.is_empty() && !p.is_empty()
 }
 

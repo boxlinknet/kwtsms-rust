@@ -10,6 +10,5 @@ Cargo.lock
 *~
 .claude/
 CLAUDE.md
-docs/plans/
-docs/prd-*
+docs/
 *.jsonl

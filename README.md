@@ -1,5 +1,11 @@
 # kwtsms
 
+[![Crates.io](https://img.shields.io/crates/v/kwtsms.svg)](https://crates.io/crates/kwtsms)
+[![docs.rs](https://docs.rs/kwtsms/badge.svg)](https://docs.rs/kwtsms)
+[![CI](https://github.com/boxlinknet/kwtsms-rust/actions/workflows/publish.yml/badge.svg)](https://github.com/boxlinknet/kwtsms-rust/actions)
+[![MSRV](https://img.shields.io/badge/MSRV-1.83-blue.svg)](https://blog.rust-lang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Rust client for the [kwtSMS API](https://www.kwtsms.com). Send SMS, check balance, validate numbers, list sender IDs, check coverage, get delivery reports.
 
 ## Install
@@ -11,6 +17,8 @@ kwtsms = "0.1"
 ```
 
 Or: `cargo add kwtsms`
+
+**Minimum supported Rust version: 1.83**
 
 ## Quick Start
 
@@ -231,23 +239,9 @@ kwtsms dlr <msg-id>                                    # delivery report
 cargo test
 
 # Integration tests (real API, test mode, no credits consumed)
-export RUST_USERNAME=your_api_user
-export RUST_PASSWORD=your_api_pass
+export rust_username=your_api_user
+export rust_password=your_api_pass
 cargo test --features integration
-```
-
-## Publishing to crates.io
-
-```bash
-# 1. Sign in at https://crates.io (GitHub account)
-# 2. Get API token: crates.io -> Account Settings -> New Token
-cargo login <token>
-
-# 3. Publish
-cargo publish
-
-# 4. Updates: bump version in Cargo.toml, then:
-cargo publish
 ```
 
 ## License
