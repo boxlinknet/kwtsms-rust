@@ -1,0 +1,46 @@
+[package]
+name = "kwtsms"
+version = "0.1.4"
+edition = "2021"
+rust-version = "1.83"
+description = "Rust client for the kwtSMS API (kwtsms.com). Send SMS, check balance, validate numbers, and more."
+license = "MIT"
+repository = "https://github.com/boxlinknet/kwtsms-rust"
+homepage = "https://www.kwtsms.com"
+documentation = "https://docs.rs/kwtsms"
+readme = "README.md"
+keywords = ["sms", "kwtsms", "kuwait", "messaging", "api"]
+categories = ["api-bindings", "web-programming::http-client"]
+
+[dependencies]
+ureq = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+
+[features]
+default = []
+cli = []
+integration = []
+
+[[bin]]
+name = "kwtsms"
+path = "src/bin/kwtsms.rs"
+required-features = ["cli"]
+
+[[example]]
+name = "basic_usage"
+path = "examples/01_basic_usage.rs"
+
+[[example]]
+name = "otp_flow"
+path = "examples/02_otp_flow.rs"
+
+[[example]]
+name = "bulk_sms"
+path = "examples/03_bulk_sms.rs"
+
+[[example]]
+name = "error_handling"
+path = "examples/04_error_handling.rs"
