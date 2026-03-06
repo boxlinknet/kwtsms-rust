@@ -36,13 +36,20 @@ pub fn validate_phone_input(phone: &str) -> (bool, Option<String>, String) {
     let trimmed = phone.trim();
 
     if trimmed.is_empty() {
-        return (false, Some("Phone number is required".to_string()), String::new());
+        return (
+            false,
+            Some("Phone number is required".to_string()),
+            String::new(),
+        );
     }
 
     if trimmed.contains('@') {
         return (
             false,
-            Some(format!("'{}' is an email address, not a phone number", trimmed)),
+            Some(format!(
+                "'{}' is an email address, not a phone number",
+                trimmed
+            )),
             String::new(),
         );
     }

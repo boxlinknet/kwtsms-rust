@@ -339,7 +339,11 @@ fn test_integration_send_wrong_sender() {
         return;
     }
     let client = get_client_or_skip();
-    let result = client.send_one("96598765432", "Wrong sender test", Some("NONEXISTENT-SENDER-12345"));
+    let result = client.send_one(
+        "96598765432",
+        "Wrong sender test",
+        Some("NONEXISTENT-SENDER-12345"),
+    );
     assert!(result.is_ok());
     let data = result.unwrap();
     // May return ERR008 or OK depending on test mode behavior

@@ -159,12 +159,8 @@ impl KwtSms {
                     .unwrap_or("ERROR");
 
                 if result == "OK" {
-                    let available = data
-                        .get("available")
-                        .and_then(|v| v.as_f64());
-                    let purchased = data
-                        .get("purchased")
-                        .and_then(|v| v.as_f64());
+                    let available = data.get("available").and_then(|v| v.as_f64());
+                    let purchased = data.get("purchased").and_then(|v| v.as_f64());
 
                     if let Ok(mut bal) = self.cached_balance.lock() {
                         *bal = available;
@@ -184,10 +180,7 @@ impl KwtSms {
                         .get("description")
                         .and_then(|v| v.as_str())
                         .unwrap_or("Unknown error");
-                    let action = data
-                        .get("action")
-                        .and_then(|v| v.as_str())
-                        .unwrap_or("");
+                    let action = data.get("action").and_then(|v| v.as_str()).unwrap_or("");
                     let error_msg = if action.is_empty() {
                         desc.to_string()
                     } else {
@@ -261,8 +254,7 @@ impl KwtSms {
                 if part.is_empty() {
                     continue;
                 }
-                let (is_valid, error, normalized) =
-                    validate_phone_input(&part.to_string());
+                let (is_valid, error, normalized) = validate_phone_input(part);
 
                 if is_valid {
                     if seen.insert(normalized.clone()) {
@@ -510,10 +502,7 @@ impl KwtSms {
         let mut result = self.send(mobile, message, sender)?;
 
         for _ in 0..max_retries {
-            let code = result
-                .get("code")
-                .and_then(|v| v.as_str())
-                .unwrap_or("");
+            let code = result.get("code").and_then(|v| v.as_str()).unwrap_or("");
             if code != "ERR028" {
                 return Ok(result);
             }
@@ -667,10 +656,7 @@ impl KwtSms {
 
                 if result == "OK" {
                     // API returns "senderid" (singular), normalize to "senderids" (plural)
-                    let senderids = data
-                        .get("senderid")
-                        .cloned()
-                        .unwrap_or(json!([]));
+                    let senderids = data.get("senderid").cloned().unwrap_or(json!([]));
                     if let Some(obj) = data.as_object_mut() {
                         obj.insert("senderids".to_string(), senderids);
                     }

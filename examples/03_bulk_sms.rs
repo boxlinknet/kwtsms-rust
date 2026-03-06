@@ -13,7 +13,11 @@ fn main() {
     ];
 
     let result = sms
-        .send(&numbers, "Holiday sale! 50% off everything at MyStore.", None)
+        .send(
+            &numbers,
+            "Holiday sale! 50% off everything at MyStore.",
+            None,
+        )
         .expect("Bulk send failed");
 
     println!("{}", serde_json::to_string_pretty(&result).unwrap());
@@ -31,7 +35,8 @@ fn main() {
         if !errors.is_empty() {
             eprintln!("Some batches failed:");
             for err in errors {
-                eprintln!("  Batch {}: {} - {}",
+                eprintln!(
+                    "  Batch {}: {} - {}",
                     err["batch"],
                     err["code"].as_str().unwrap_or("?"),
                     err["description"].as_str().unwrap_or("?"),

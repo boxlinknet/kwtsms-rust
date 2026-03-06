@@ -20,7 +20,10 @@ fn main() {
         .send_one("96598765432", "Hello from the kwtsms Rust client!", None)
         .expect("Send failed");
 
-    println!("Send result: {}", serde_json::to_string_pretty(&result).unwrap());
+    println!(
+        "Send result: {}",
+        serde_json::to_string_pretty(&result).unwrap()
+    );
 
     // Check the msg-id and balance-after from the response
     if let Some(msg_id) = result.get("msg-id").and_then(|v| v.as_str()) {

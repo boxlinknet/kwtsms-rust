@@ -75,14 +75,15 @@ fn is_emoji(c: char) -> bool {
 }
 
 fn is_hidden_char(c: char) -> bool {
-    matches!(c,
+    matches!(
+        c,
         '\u{200B}' |  // Zero-width space
         '\u{200C}' |  // Zero-width non-joiner
         '\u{200D}' |  // Zero-width joiner
         '\u{2060}' |  // Word joiner
         '\u{00AD}' |  // Soft hyphen
         '\u{FEFF}' |  // BOM
-        '\u{FFFC}'    // Object replacement character
+        '\u{FFFC}' // Object replacement character
     )
 }
 
@@ -164,10 +165,7 @@ mod tests {
 
     #[test]
     fn test_clean_html_with_attributes() {
-        assert_eq!(
-            clean_message("<p class=\"test\">Hello</p>"),
-            "Hello"
-        );
+        assert_eq!(clean_message("<p class=\"test\">Hello</p>"), "Hello");
     }
 
     #[test]
@@ -192,7 +190,10 @@ mod tests {
 
     #[test]
     fn test_clean_preserves_arabic_text() {
-        assert_eq!(clean_message("\u{0645}\u{0631}\u{062D}\u{0628}\u{0627}"), "\u{0645}\u{0631}\u{062D}\u{0628}\u{0627}");
+        assert_eq!(
+            clean_message("\u{0645}\u{0631}\u{062D}\u{0628}\u{0627}"),
+            "\u{0645}\u{0631}\u{062D}\u{0628}\u{0627}"
+        );
     }
 
     #[test]
@@ -259,7 +260,9 @@ mod tests {
     #[test]
     fn test_clean_complex_message() {
         assert_eq!(
-            clean_message("Your OTP is \u{0661}\u{0662}\u{0663}\u{0664} \u{1F600}\u{200B}<b>Hello</b>"),
+            clean_message(
+                "Your OTP is \u{0661}\u{0662}\u{0663}\u{0664} \u{1F600}\u{200B}<b>Hello</b>"
+            ),
             "Your OTP is 1234 Hello"
         );
     }

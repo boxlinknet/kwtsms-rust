@@ -36,35 +36,80 @@ impl std::error::Error for KwtSmsError {}
 /// Complete error code map: kwtSMS error codes to developer-friendly action messages.
 pub static API_ERRORS: LazyLock<HashMap<&'static str, &'static str>> = LazyLock::new(|| {
     let mut m = HashMap::new();
-    m.insert("ERR001", "API is disabled on this account. Enable it at kwtsms.com \u{2192} Account \u{2192} API.");
+    m.insert(
+        "ERR001",
+        "API is disabled on this account. Enable it at kwtsms.com \u{2192} Account \u{2192} API.",
+    );
     m.insert("ERR002", "A required parameter is missing. Check that username, password, sender, mobile, and message are all provided.");
     m.insert("ERR003", "Wrong API username or password. Check KWTSMS_USERNAME and KWTSMS_PASSWORD. These are your API credentials, not your account mobile number.");
-    m.insert("ERR004", "This account does not have API access. Contact kwtSMS support to enable it.");
+    m.insert(
+        "ERR004",
+        "This account does not have API access. Contact kwtSMS support to enable it.",
+    );
     m.insert("ERR005", "This account is blocked. Contact kwtSMS support.");
     m.insert("ERR006", "No valid phone numbers. Make sure each number includes the country code (e.g., 96598765432 for Kuwait, not 98765432).");
-    m.insert("ERR007", "Too many numbers in a single request (maximum 200). Split into smaller batches.");
+    m.insert(
+        "ERR007",
+        "Too many numbers in a single request (maximum 200). Split into smaller batches.",
+    );
     m.insert("ERR008", "This sender ID is banned or not found. Sender IDs are case sensitive. Check your registered sender IDs at kwtsms.com.");
-    m.insert("ERR009", "Message is empty. Provide a non-empty message text.");
-    m.insert("ERR010", "Account balance is zero. Recharge credits at kwtsms.com.");
-    m.insert("ERR011", "Insufficient balance for this send. Buy more credits at kwtsms.com.");
-    m.insert("ERR012", "Message is too long (over 6 SMS pages). Shorten your message.");
-    m.insert("ERR013", "Send queue is full (1000 messages). Wait a moment and try again.");
+    m.insert(
+        "ERR009",
+        "Message is empty. Provide a non-empty message text.",
+    );
+    m.insert(
+        "ERR010",
+        "Account balance is zero. Recharge credits at kwtsms.com.",
+    );
+    m.insert(
+        "ERR011",
+        "Insufficient balance for this send. Buy more credits at kwtsms.com.",
+    );
+    m.insert(
+        "ERR012",
+        "Message is too long (over 6 SMS pages). Shorten your message.",
+    );
+    m.insert(
+        "ERR013",
+        "Send queue is full (1000 messages). Wait a moment and try again.",
+    );
     m.insert("ERR019", "No delivery reports found for this message.");
-    m.insert("ERR020", "Message ID does not exist. Make sure you saved the msg-id from the send response.");
-    m.insert("ERR021", "No delivery report available for this message yet.");
-    m.insert("ERR022", "Delivery reports are not ready yet. Try again after 24 hours.");
-    m.insert("ERR023", "Unknown delivery report error. Contact kwtSMS support.");
+    m.insert(
+        "ERR020",
+        "Message ID does not exist. Make sure you saved the msg-id from the send response.",
+    );
+    m.insert(
+        "ERR021",
+        "No delivery report available for this message yet.",
+    );
+    m.insert(
+        "ERR022",
+        "Delivery reports are not ready yet. Try again after 24 hours.",
+    );
+    m.insert(
+        "ERR023",
+        "Unknown delivery report error. Contact kwtSMS support.",
+    );
     m.insert("ERR024", "Your IP address is not in the API whitelist. Add it at kwtsms.com \u{2192} Account \u{2192} API \u{2192} IP Lockdown, or disable IP lockdown.");
     m.insert("ERR025", "Invalid phone number. Make sure the number includes the country code (e.g., 96598765432 for Kuwait, not 98765432).");
     m.insert("ERR026", "This country is not activated on your account. Contact kwtSMS support to enable the destination country.");
-    m.insert("ERR027", "HTML tags are not allowed in the message. Remove any HTML content and try again.");
+    m.insert(
+        "ERR027",
+        "HTML tags are not allowed in the message. Remove any HTML content and try again.",
+    );
     m.insert("ERR028", "You must wait at least 15 seconds before sending to the same number again. No credits were consumed.");
     m.insert("ERR029", "Message ID does not exist or is incorrect.");
     m.insert("ERR030", "Message is stuck in the send queue with an error. Delete it at kwtsms.com \u{2192} Queue to recover credits.");
     m.insert("ERR031", "Message rejected: bad language detected.");
     m.insert("ERR032", "Message rejected: spam detected.");
-    m.insert("ERR033", "No active coverage found. Contact kwtSMS support.");
-    m.insert("ERR_INVALID_INPUT", "One or more phone numbers are invalid. See details above.");
+    m.insert(
+        "ERR033",
+        "No active coverage found. Contact kwtSMS support.",
+    );
+    m.insert(
+        "ERR_INVALID_INPUT",
+        "One or more phone numbers are invalid. See details above.",
+    );
     m
 });
 

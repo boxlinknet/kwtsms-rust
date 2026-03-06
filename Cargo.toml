@@ -1,8 +1,8 @@
 [package]
 name = "kwtsms"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
-rust-version = "1.56"
+rust-version = "1.80"
 description = "Rust client for the kwtSMS API (kwtsms.com). Send SMS, check balance, validate numbers, and more."
 license = "MIT"
 repository = "https://github.com/boxlinknet/kwtsms-rust"

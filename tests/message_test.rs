@@ -84,10 +84,7 @@ fn test_html_with_attributes() {
 
 #[test]
 fn test_html_nested() {
-    assert_eq!(
-        clean_message("<div><p>Hello</p></div>"),
-        "Hello"
-    );
+    assert_eq!(clean_message("<div><p>Hello</p></div>"), "Hello");
 }
 
 #[test]

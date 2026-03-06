@@ -191,7 +191,7 @@ fn test_validate_exactly_16_digits() {
 #[test]
 fn test_validate_arabic_digits() {
     let (valid, err, normalized) = validate_phone_input(
-        "\u{0669}\u{0666}\u{0665}\u{0669}\u{0668}\u{0667}\u{0666}\u{0665}\u{0664}\u{0663}\u{0662}"
+        "\u{0669}\u{0666}\u{0665}\u{0669}\u{0668}\u{0667}\u{0666}\u{0665}\u{0664}\u{0663}\u{0662}",
     );
     assert!(valid);
     assert!(err.is_none());

@@ -13,11 +13,7 @@ const TIMEOUT_SECS: u64 = 15;
 /// - 15-second timeout
 /// - Enriches ERROR responses with action guidance
 /// - Logs every call to JSONL if log_file is not empty
-pub fn api_request(
-    endpoint: &str,
-    payload: &Value,
-    log_file: &str,
-) -> Result<Value, KwtSmsError> {
+pub fn api_request(endpoint: &str, payload: &Value, log_file: &str) -> Result<Value, KwtSmsError> {
     let url = format!("{}/{}/", BASE_URL, endpoint);
 
     let body = match serde_json::to_string(payload) {
@@ -37,9 +33,8 @@ pub fn api_request(
                 .into_string()
                 .map_err(|e| KwtSmsError::Network(format!("Failed to read response: {}", e)))?;
 
-            let mut data: Value = serde_json::from_str(&response_body).map_err(|e| {
-                KwtSmsError::Network(format!("Invalid JSON response: {}", e))
-            })?;
+            let mut data: Value = serde_json::from_str(&response_body)
+                .map_err(|e| KwtSmsError::Network(format!("Invalid JSON response: {}", e)))?;
 
             enrich_error(&mut data);
 

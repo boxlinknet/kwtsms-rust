@@ -159,14 +159,7 @@ mod tests {
         let request = serde_json::json!({});
         let response = serde_json::json!({});
 
-        write_log(
-            &path,
-            "send",
-            &request,
-            &response,
-            false,
-            Some("timeout"),
-        );
+        write_log(&path, "send", &request, &response, false, Some("timeout"));
 
         let content = fs::read_to_string(&path).unwrap();
         assert!(content.contains("timeout"));

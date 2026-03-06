@@ -188,11 +188,7 @@ fn cmd_send(args: &[String]) {
     let client = get_client();
 
     // Warn about test mode
-    if env::var("KWTSMS_TEST_MODE")
-        .unwrap_or_default()
-        .as_str()
-        == "1"
-    {
+    if env::var("KWTSMS_TEST_MODE").unwrap_or_default().as_str() == "1" {
         eprintln!("WARNING: Test mode is ON. Messages will be queued but NOT delivered.");
     }
 
@@ -240,7 +236,10 @@ fn cmd_validate(args: &[String]) {
     let numbers: Vec<&str> = args.iter().map(|s| s.as_str()).collect();
 
     match client.validate(&numbers) {
-        Ok(data) => println!("{}", serde_json::to_string_pretty(&data).unwrap_or_default()),
+        Ok(data) => println!(
+            "{}",
+            serde_json::to_string_pretty(&data).unwrap_or_default()
+        ),
         Err(e) => {
             eprintln!("Error: {}", e);
             process::exit(1);
@@ -256,7 +255,10 @@ fn cmd_status(args: &[String]) {
 
     let client = get_client();
     match client.status(&args[0]) {
-        Ok(data) => println!("{}", serde_json::to_string_pretty(&data).unwrap_or_default()),
+        Ok(data) => println!(
+            "{}",
+            serde_json::to_string_pretty(&data).unwrap_or_default()
+        ),
         Err(e) => {
             eprintln!("Error: {}", e);
             process::exit(1);
@@ -272,7 +274,10 @@ fn cmd_dlr(args: &[String]) {
 
     let client = get_client();
     match client.dlr(&args[0]) {
-        Ok(data) => println!("{}", serde_json::to_string_pretty(&data).unwrap_or_default()),
+        Ok(data) => println!(
+            "{}",
+            serde_json::to_string_pretty(&data).unwrap_or_default()
+        ),
         Err(e) => {
             eprintln!("Error: {}", e);
             process::exit(1);

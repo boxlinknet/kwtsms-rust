@@ -8,7 +8,9 @@ fn main() {
     let (valid, error, normalized) = validate_phone_input(user_input);
     if !valid {
         // Show user-friendly message, not the raw error
-        eprintln!("Please enter a valid phone number in international format (e.g., +965 9876 5432).");
+        eprintln!(
+            "Please enter a valid phone number in international format (e.g., +965 9876 5432)."
+        );
         eprintln!("Debug: {}", error.unwrap());
         return;
     }
@@ -22,7 +24,9 @@ fn main() {
     println!("Cleaned message: '{}'", cleaned);
 
     // 3. Send and handle errors
-    let result = sms.send_one(&normalized, raw_message, None).expect("Send failed");
+    let result = sms
+        .send_one(&normalized, raw_message, None)
+        .expect("Send failed");
 
     match result["result"].as_str() {
         Some("OK") => {
@@ -54,7 +58,9 @@ fn main() {
                     eprintln!("Please wait a moment before requesting another code.");
                 }
                 "ERR031" | "ERR032" => {
-                    eprintln!("Your message could not be sent. Please try again with different content.");
+                    eprintln!(
+                        "Your message could not be sent. Please try again with different content."
+                    );
                 }
                 _ => {
                     eprintln!("Could not send SMS. Please try again later.");
