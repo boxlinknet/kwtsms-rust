@@ -276,7 +276,7 @@ All formats are accepted and normalized automatically:
 | `965 9876 5432` | `96598765432` | Yes |
 | `965-9876-5432` | `96598765432` | Yes |
 | `(965) 98765432` | `96598765432` | Yes |
-| Arabic digits | `96598765432` | Yes |
+| `٩٦٥٩٨٧٦٥٤٣٢` | `96598765432` | Yes |
 | `123456` (too short) | rejected | No |
 | `user@gmail.com` | rejected | No |
 
