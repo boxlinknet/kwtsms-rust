@@ -89,7 +89,7 @@ KWTSMS_LOG_FILE=kwtsms.log
 Or pass credentials directly:
 
 ```rust
-let sms = KwtSms::new("username", "password", Some("MY-SENDER"), false, None).unwrap();
+let sms = KwtSms::new("rust_username", "rust_password", Some("MY-SENDER"), false, None).unwrap();
 ```
 
 ## Credential Management

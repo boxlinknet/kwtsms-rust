@@ -24,7 +24,7 @@ const ERR013_BACKOFF_SECS: &[u64] = &[30, 60, 120];
 /// ```no_run
 /// use kwtsms::KwtSms;
 ///
-/// let sms = KwtSms::new("username", "password", None, false, None).unwrap();
+/// let sms = KwtSms::new("rust_username", "rust_password", None, false, None).unwrap();
 /// let result = sms.verify();
 /// ```
 pub struct KwtSms {

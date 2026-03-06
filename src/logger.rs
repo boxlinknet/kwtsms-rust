@@ -110,8 +110,8 @@ mod tests {
         let _ = fs::remove_file(&path);
 
         let request = serde_json::json!({
-            "username": "testuser",
-            "password": "secret123",
+            "username": "rust_username",
+            "password": "rust_password",
             "mobile": "96598765432"
         });
         let response = serde_json::json!({"result": "OK"});
@@ -120,8 +120,8 @@ mod tests {
 
         let content = fs::read_to_string(&path).unwrap();
         assert!(content.contains("***"));
-        assert!(!content.contains("secret123"));
-        assert!(content.contains("testuser"));
+        assert!(!content.contains("rust_password"));
+        assert!(content.contains("rust_username"));
         assert!(content.contains("send"));
         fs::remove_file(&path).ok();
     }
@@ -139,7 +139,7 @@ mod tests {
         let path = format!("/tmp/kwtsms_test_log_ts_{}.jsonl", std::process::id());
         let _ = fs::remove_file(&path);
 
-        let request = serde_json::json!({"username": "test"});
+        let request = serde_json::json!({"username": "rust_username"});
         let response = serde_json::json!({"result": "OK"});
 
         write_log(&path, "balance", &request, &response, true, None);

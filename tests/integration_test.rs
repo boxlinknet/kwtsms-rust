@@ -29,7 +29,7 @@ fn get_client_or_skip() -> KwtSms {
         Some(c) => c,
         None => {
             eprintln!("Skipping: rust_username / rust_password not set");
-            return KwtSms::new("skip", "skip", None, true, Some("")).unwrap();
+            return KwtSms::new("rust_skip", "rust_skip", None, true, Some("")).unwrap();
         }
     }
 }
@@ -56,7 +56,7 @@ fn test_integration_verify_valid_credentials() {
 
 #[test]
 fn test_integration_verify_wrong_credentials() {
-    let client = KwtSms::new("wrong_user_xyz", "wrong_pass_xyz", None, true, Some("")).unwrap();
+    let client = KwtSms::new("rust_invalid_user", "rust_invalid_pass", None, true, Some("")).unwrap();
     let result = client.verify();
     assert!(!result.ok);
     assert!(result.error.is_some());
