@@ -48,13 +48,6 @@ cargo test --features integration
 
 Integration tests always use `test_mode=true`. No credits are consumed.
 
-### CLI
-
-```bash
-cargo run --features cli -- verify
-cargo run --features cli -- send 96598765432 "Hello"
-```
-
 ## Build
 
 ```bash
@@ -91,8 +84,6 @@ kwtsms-rust/
 │   ├── env.rs                    load_env_file()
 │   ├── logger.rs                 JSONL logger with password masking
 │   ├── types.rs                  All public return types
-│   └── bin/
-│       └── kwtsms.rs             CLI (compiled with feature "cli")
 ├── tests/
 │   ├── phone_test.rs             Phone normalization + validation (33 tests)
 │   ├── message_test.rs           Message cleaning (45 tests)

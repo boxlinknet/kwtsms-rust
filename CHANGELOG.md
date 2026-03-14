@@ -79,5 +79,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `.env` file support with `from_env()` factory method.
 - JSONL logging with password masking.
 - Thread-safe cached balance.
-- CLI binary behind `cli` feature flag.
 - Comprehensive test suite: unit, mock, and integration tests.

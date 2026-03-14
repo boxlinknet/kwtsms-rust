@@ -208,29 +208,6 @@ let cleaned = clean_message("Hello \u{1F600} OTP: \u{0661}\u{0662}\u{0663}");
 
 Arabic letters and Arabic text are fully supported and never stripped.
 
-## CLI
-
-Build the CLI binary:
-
-```
-cargo install kwtsms --features cli
-```
-
-Commands:
-
-```
-kwtsms verify                                          # test credentials
-kwtsms balance                                         # show credits
-kwtsms senderid                                        # list sender IDs
-kwtsms coverage                                        # list active prefixes
-kwtsms send <mobile> <message> [--sender ID]           # send SMS
-kwtsms validate <number> [number ...]                  # validate numbers
-kwtsms status <msg-id>                                 # check status
-kwtsms dlr <msg-id>                                    # delivery report
-```
-
-Test mode prints a visible warning before sending. Errors print `action` guidance.
-
 ## Error Handling
 
 All methods return `Result<T, KwtSmsError>`. The error enum:

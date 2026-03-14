@@ -21,13 +21,7 @@ serde_json = "1"
 
 [features]
 default = []
-cli = []
 integration = []
-
-[[bin]]
-name = "kwtsms"
-path = "src/bin/kwtsms.rs"
-required-features = ["cli"]
 
 [[example]]
 name = "basic_usage"
