@@ -56,7 +56,14 @@ fn test_integration_verify_valid_credentials() {
 
 #[test]
 fn test_integration_verify_wrong_credentials() {
-    let client = KwtSms::new("rust_invalid_user", "rust_invalid_pass", None, true, Some("")).unwrap();
+    let client = KwtSms::new(
+        "rust_invalid_user",
+        "rust_invalid_pass",
+        None,
+        true,
+        Some(""),
+    )
+    .unwrap();
     let result = client.verify();
     assert!(!result.ok);
     assert!(result.error.is_some());
