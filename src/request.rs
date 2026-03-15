@@ -4,6 +4,14 @@ use serde_json::Value;
 
 const BASE_URL: &str = "https://www.kwtsms.com/API";
 const TIMEOUT_SECS: u64 = 15;
+const _: () = assert!(
+    BASE_URL.as_bytes()[0] == b'h'
+        && BASE_URL.as_bytes()[1] == b't'
+        && BASE_URL.as_bytes()[2] == b't'
+        && BASE_URL.as_bytes()[3] == b'p'
+        && BASE_URL.as_bytes()[4] == b's',
+    "API base URL must use HTTPS"
+);
 
 /// POST to a kwtSMS API endpoint and return the parsed JSON response.
 ///

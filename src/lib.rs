@@ -22,7 +22,7 @@
 //! ```
 
 mod client;
-pub mod env;
+pub(crate) mod env;
 pub mod errors;
 pub mod logger;
 pub mod message;

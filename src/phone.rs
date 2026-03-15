@@ -521,40 +521,13 @@ pub static PHONE_RULES: &[PhoneRule] = &[
 /// Find the country code prefix from a normalized phone number.
 /// Tries 3-digit codes first, then 2-digit, then 1-digit (longest match wins).
 pub fn find_country_code(normalized: &str) -> Option<&'static str> {
-    if normalized.len() >= 3 {
-        let cc3 = &normalized[..3];
-        if PHONE_RULES.iter().any(|r| r.country_code == cc3) {
-            return Some(
-                PHONE_RULES
-                    .iter()
-                    .find(|r| r.country_code == cc3)
-                    .unwrap()
-                    .country_code,
-            );
-        }
-    }
-    if normalized.len() >= 2 {
-        let cc2 = &normalized[..2];
-        if PHONE_RULES.iter().any(|r| r.country_code == cc2) {
-            return Some(
-                PHONE_RULES
-                    .iter()
-                    .find(|r| r.country_code == cc2)
-                    .unwrap()
-                    .country_code,
-            );
-        }
-    }
-    if !normalized.is_empty() {
-        let cc1 = &normalized[..1];
-        if PHONE_RULES.iter().any(|r| r.country_code == cc1) {
-            return Some(
-                PHONE_RULES
-                    .iter()
-                    .find(|r| r.country_code == cc1)
-                    .unwrap()
-                    .country_code,
-            );
+    // Try 3-digit, then 2-digit, then 1-digit (longest match wins)
+    for len in [3, 2, 1] {
+        if normalized.len() >= len {
+            let prefix = &normalized[..len];
+            if let Some(rule) = PHONE_RULES.iter().find(|r| r.country_code == prefix) {
+                return Some(rule.country_code);
+            }
         }
     }
     None

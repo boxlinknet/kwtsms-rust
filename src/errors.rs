@@ -3,7 +3,7 @@ use std::fmt;
 use std::sync::LazyLock;
 
 /// Custom error type for the kwtsms crate.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum KwtSmsError {
     /// Network or HTTP-level error.
     Network(String),

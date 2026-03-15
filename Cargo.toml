@@ -1,6 +1,6 @@
 [package]
 name = "kwtsms"
-version = "0.1.9"
+version = "0.1.10"
 edition = "2021"
 rust-version = "1.83"
 description = "Rust client for the kwtSMS API (kwtsms.com). Send SMS, check balance, validate numbers, and more."

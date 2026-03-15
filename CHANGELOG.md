@@ -5,6 +5,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.10] - 2026-03-15
+
+### Fixed
+
+- Remove unsound `unsafe impl Send/Sync` for `KwtSms` (all fields already auto-derive these traits).
+- Eliminate redundant `unwrap()` in `find_country_code()`, replace with single `find()` + `if let`.
+- Default `log_file` to disabled (`""`) when `KwtSms::new()` is called with `None` (libraries should not silently write files).
+
+### Added
+
+- Manual `Debug` impl for `KwtSms` that masks password as `"***"`.
+- Compile-time HTTPS assertion on API base URL.
+- `PartialEq` derive on `KwtSmsError` for easier testing.
+- Doc note on `send_with_retry()` about blocking behavior in async contexts.
+
+### Changed
+
+- `env` module changed from `pub` to `pub(crate)` (internal utility, not public API).
+
+## [0.1.9] - 2026-03-15
+
+### Added
+
+- Country-specific phone validation: `PHONE_RULES` table for 82 countries with local number length and mobile prefix checks.
+- `find_country_code()`, `validate_phone_format()`, `PhoneRule` struct, `PHONE_RULES` exported publicly.
+- Domestic trunk prefix stripping in `normalize_phone()` (e.g. `9660559...` -> `966559...`).
+- GitGuardian secret scanning workflow.
+- Downloads badge and GitGuardian badge in README.
+
+### Changed
+
+- Remove embedded CLI (replaced by standalone [kwtsms-cli](https://github.com/boxlinknet/kwtsms-cli)).
+- Fix `cargo audit` workflow to generate `Cargo.lock` before scanning.
+- Fix CI badge link to point to specific workflow.
+
 ## [0.1.8] - 2026-03-06
 
 ### Changed
@@ -75,7 +110,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Automatic phone number normalization and validation.
 - Message cleaning: strips emojis, HTML, invisible characters, converts Arabic digits.
 - Bulk send with auto-batching (>200 numbers), 0.5s delay, ERR013 retry with backoff.
-- All 33 error codes mapped to developer-friendly action messages.
+- All 29 error codes mapped to developer-friendly action messages.
 - `.env` file support with `from_env()` factory method.
 - JSONL logging with password masking.
 - Thread-safe cached balance.

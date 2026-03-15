@@ -85,16 +85,17 @@ kwtsms-rust/
 │   ├── logger.rs                 JSONL logger with password masking
 │   ├── types.rs                  All public return types
 ├── tests/
-│   ├── phone_test.rs             Phone normalization + validation (33 tests)
+│   ├── phone_test.rs             Phone normalization + validation (66 tests)
 │   ├── message_test.rs           Message cleaning (45 tests)
 │   ├── errors_test.rs            Error code mapping (13 tests)
-│   └── integration_test.rs       Real API tests (25 tests, behind feature flag)
+│   └── integration_test.rs       Real API tests (behind feature flag)
 └── examples/
     ├── README.md                 Example index
     ├── 01_basic_usage.rs         Verify, send, balance
     ├── 02_otp_flow.rs            OTP send with validation
     ├── 03_bulk_sms.rs            Bulk send with batching
-    └── 04_error_handling.rs      Error paths, user-facing messages
+    ├── 04_error_handling.rs      Error paths, user-facing messages
+    └── 05_otp_production.rs      Production OTP: rate limiting, expiry, DB schemas
 ```
 
 ## Making Changes

@@ -72,7 +72,7 @@ impl KwtSms {
             password,
             sender_id: sender_id.unwrap_or("KWT-SMS").to_string(),
             test_mode,
-            log_file: log_file.unwrap_or("kwtsms.log").to_string(),
+            log_file: log_file.unwrap_or("").to_string(),
             cached_balance: Arc::new(Mutex::new(None)),
             cached_purchased: Arc::new(Mutex::new(None)),
         })
@@ -492,6 +492,9 @@ impl KwtSms {
     ///
     /// Retries up to `max_retries` times with 16-second delay.
     /// Only retries ERR028. All other errors return immediately.
+    ///
+    /// **Note:** This method blocks the calling thread with `thread::sleep`.
+    /// If used from an async runtime, wrap in `tokio::task::spawn_blocking`.
     pub fn send_with_retry(
         &self,
         mobile: &[&str],
@@ -778,6 +781,14 @@ impl KwtSms {
     }
 }
 
-// KwtSms is Send + Sync because it uses Arc<Mutex<>> for interior mutability
-unsafe impl Send for KwtSms {}
-unsafe impl Sync for KwtSms {}
+impl std::fmt::Debug for KwtSms {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("KwtSms")
+            .field("username", &self.username)
+            .field("password", &"***")
+            .field("sender_id", &self.sender_id)
+            .field("test_mode", &self.test_mode)
+            .field("log_file", &self.log_file)
+            .finish()
+    }
+}
