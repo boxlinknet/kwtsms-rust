@@ -34,5 +34,8 @@ pub mod types;
 pub use client::KwtSms;
 pub use errors::{enrich_error, KwtSmsError, API_ERRORS};
 pub use message::clean_message;
-pub use phone::{normalize_phone, validate_phone_input};
+pub use phone::{
+    find_country_code, normalize_phone, validate_phone_format, validate_phone_input, PhoneRule,
+    PHONE_RULES,
+};
 pub use types::*;
